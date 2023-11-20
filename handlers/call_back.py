@@ -5,17 +5,22 @@ from config import bot, ADMIN_ID
 from database.sql_commands import Database
 from keyboards.inline_buttons import questionnaire_keyboard
 
+
 async def start_questionnaire_call(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
         text="Python or Mojo ?",
         reply_markup=await questionnaire_keyboard()
     )
+
+
 async def python_call(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
         text="U R Python Developer 🐍"
     )
+
+
 async def mojo_call(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
@@ -24,16 +29,18 @@ async def mojo_call(call: types.CallbackQuery):
 
 
 async def admin_call(message: types.Message):
-    if message.from_user.id == ADMIN_ID:
+    print(ADMIN_ID)
+    print(message.from_user.id)
+    if message.from_user.id == int(ADMIN_ID):
         await message.delete()
         await bot.send_message(
             chat_id=message.from_user.id,
-            text="Привет мастер🐲"
+            text="Hello master 🐲"
         )
     else:
         await bot.send_message(
             chat_id=message.from_user.id,
-            text="Ты не мой мастер 🤬"
+            text="U r not my master 🤬"
         )
 
 
