@@ -82,5 +82,10 @@ async def reference_menu_keyboard():
         "Reference Link 🔗",
         callback_data="reference_link"
     )
-    markup.add(reference_button)
+    reference_button_list = InlineKeyboardButton(
+        'reference list',
+        callback_data='reference_list'
+    )
+    markup.add(reference_button, reference_button_list)
     return markup
+
