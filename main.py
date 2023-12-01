@@ -21,7 +21,7 @@ call_back.register_callback_handlers(dp=dp)
 registration.register_registration_handlers(dp=dp)
 profile.register_profile_handlers(dp=dp)
 chat_actions.register_chat_actions_handlers(dp=dp)
-
+reference.register_reference_handlers(dp=dp)
 if __name__ == "__main__":
     executor.start_polling(
         dp,
