@@ -88,3 +88,12 @@ async def reference_menu_keyboard():
     )
     markup.add(reference_button)
     return markup
+
+
+async def save_button():
+    markup = InlineKeyboardMarkup()
+    save_service = InlineKeyboardButton(
+        'сохранить', callback_data='save-service'
+    )
+    markup.add(save_service)
+    return markup
