@@ -23,8 +23,11 @@ async def start_keyboard():
         "Reference Menu 🪲",
         callback_data="reference_menu"
     )
+    service_button = InlineKeyboardButton(
+        'services О!', callback_data='service_o'
+    )
     async_service_button = InlineKeyboardButton(
-        'быстрые услуги О!', callback_data='async_service'
+        'fast services О!', callback_data='async_service'
     )
     markup.add(questionnaire_button)
     markup.add(registration_button)
@@ -32,6 +35,7 @@ async def start_keyboard():
     markup.add(random_profiles_button)
     markup.add(reference_menu_button)
     markup.add(async_service_button)
+    markup.add(service_button)
     return markup
 
 
