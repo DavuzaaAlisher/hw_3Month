@@ -4,8 +4,8 @@ from aiogram import types, Dispatcher
 from config import bot, ADMIN_ID
 from database.sql_commands import Database
 from keyboards.inline_buttons import questionnaire_keyboard, save_button
-from scraping.async_scraper import AsyncScraper
-from scraping.o_kg import ServiceOScrapper
+# from scraping.async_scraper import AsyncScraper
+# from scraping.o_kg import ServiceOScrapper
 import re
 
 
@@ -47,13 +47,13 @@ async def admin_call(message: types.Message):
         )
 
 
-async def service_o(call: types.CallbackQuery):
-    scraper = ServiceOScrapper()
-    data = scraper.parse_data()
-    links = ServiceOScrapper.PLUS_URL
-    for link in data:
-        await  bot.send_message(chat_id=call.from_user.id, text=f"Услуги О!:"
-                                                                f"\n{links}{link}", reply_markup=await save_button())
+# async def service_o(call: types.CallbackQuery):
+#     scraper = ServiceOScrapper()
+#     data = scraper.parse_data()
+#     links = ServiceOScrapper.PLUS_URL
+#     for link in data:
+#         await  bot.send_message(chat_id=call.from_user.id, text=f"Услуги О!:"
+#                                                                 f"\n{links}{link}", reply_markup=await save_button())
 
 
 async def save_service_call(call: types.CallbackQuery):
@@ -64,13 +64,13 @@ async def save_service_call(call: types.CallbackQuery):
     await bot.send_message(chat_id=call.from_user.id, text="Вы сохранили ссылку")
 
 
-async def async_service(call: types.CallbackQuery):
-    data = await AsyncScraper().async_scrapers()
-    data = await AsyncScraper().async_scrapers()
-    links = AsyncScraper.PLUS_URL
-    for link in data:
-        await bot.send_message(chat_id=call.from_user.id, text=f"Услуги О!:"
-                                                               f"\n{links}{link}", reply_markup=await save_button())
+# async def async_service(call: types.CallbackQuery):
+#     data = await AsyncScraper().async_scrapers()
+#     data = await AsyncScraper().async_scrapers()
+#     links = AsyncScraper.PLUS_URL
+#     for link in data:
+#         await bot.send_message(chat_id=call.from_user.id, text=f"Услуги О!:"
+#                                                                f"\n{links}{link}", reply_markup=await save_button())
 
 
 def register_callback_handlers(dp: Dispatcher):
@@ -82,9 +82,9 @@ def register_callback_handlers(dp: Dispatcher):
                                        lambda call: call.data == "mojo")
     dp.register_message_handler(admin_call,
                                 lambda word: "dorei" in word.text)
-    dp.register_callback_query_handler(async_service,
-                                       lambda call: call.data == 'async_service')
-    dp.register_callback_query_handler(service_o,
-                                       lambda call: call.data == 'service_o')
-    dp.register_callback_query_handler(save_service_call,
-                                       lambda call: call.data == 'save-service')
+    # dp.register_callback_query_handler(async_service,
+    #                                    lambda call: call.data == 'async_service')
+    # dp.register_callback_query_handler(service_o,
+    #                                    lambda call: call.data == 'service_o')
+    # dp.register_callback_query_handler(save_service_call,
+    #                                    lambda call: call.data == 'save-service')
